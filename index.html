@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue-looping v-for</title>
+    <!-- development version, includes helpful console warnings
+        從https://vuejs.org/v2/guide/ ，vue documentation取得
+        development version，上線要用production ver才會輕巧且不會有console warnings
+    -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11" type="text/javascript"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{ title }}</h1>
+        <ul>
+            <!--  這種iterative取值方式跟Python非常類似
+                  透過這種方式可以輕易cycled through iterative data
+                  並且動態生成多個具有該位址值的element(這邊是li)
+             -->
+            <li v-for="item in items">{{ item }}</li>
+            <!--  會產生多個div(v-for於所在element產生對應的數目)，並且於其中的element注入每筆dict-->
+            <div v-for="ninja in ninjas">
+                <p>{{ ninja.name }}</p>
+                <p>age:{{ ninja.age }}</p>
+                <p>belt:{{ ninja.belt }}</p>
+            </div>
+
+            <!--  取得index方式，透過括號parenthesis
+                  加入一個新變數，來承接index of list or dict
+            -->
+            <div v-for="(ninja, index) in ninjas">
+                <!-- 產生的變數都可以直接如同data那樣來call -->
+                <p>{{index}}-{{ ninja.name }}</p>
+                <p>age:{{ ninja.age }}</p>
+                <p>belt:{{ ninja.belt }}</p>
+            </div>
+        </ul>
+    </div>
+    <script type="text/javascript" src="app.js"></script>
+</body>
+</html>
